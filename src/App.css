@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+.page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(247, 211, 217);
+  font-family: 'Single Day', cursive;
+  letter-spacing: 1px;
+  font-size: 40px;
+  background-image: url('https://64.media.tumblr.com/6f576726e193d27e4759ae4bc5d037a7/1dc84a78cd816457-ab/s500x750/1e0bb85e352334a4d46d791e9d6caabb6e3d342d.gif');
+  background-size: cover;
+}
+.container {
+  background-color: white;
+  width: 80vh;
+  border-radius: 30px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  max-width: 100%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  min-height: 480px;
+}
+.question-container img {
+  position: absolute;
+  top: 20%;
+  height: 300px;
+  width: 300px;
+  left: 0;
+  z-index: 1;
+  animation: move 1s ease-in-out;
+}
+
+.question-container{
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.answerYes{
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.active .answerYes{
+  transform: translateX(100%);
+}
+
+.asking{
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.active .asking{
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+
+@keyframes move{
+  0%, 49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%, 100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.container-transition {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+.container.active .container-transition {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+  background-color: rgb(223, 132, 147);
+  height: 100%;
+  background: linear-gradient(to right, #e4455f, #df96b4);
+  position: relative;
+  left: -100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+
+}
+.container.active .toggle {
+  transform: translateX(50%);
+}
+
+.toggle-panel{
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+
+.container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right {
+  right: 0;
+  transform: translateX();
+}
+
+.container.active .toggle-right{
+  transform: translateX(200%);
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10%;
+}
+
+.heart-button {
+  position: relative;
+  width: 120px;
+  height: 90px;
+}
+.heart-button:before,
+.heart-button:after {
+  content: "";
+  position: absolute;
+  width: 55px;
+  height: 90px;
+  border-radius: 50px 50px 0 0;
+  border: #080103;
+  border-width: 1px 1px 0 0;
+  background: rgb(190, 55, 77);
+  transition-duration: 0.2s;
+  z-index: 1;
+}
+
+
+.heart-button:before {
+  left: 50px;
+  transform: rotate(-45deg);
+  transform-origin: 0 95%;
+  box-shadow: 2px 3px #313131;
+}
+
+.heart-button:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+  box-shadow: 6px -2px 0px 1px #313131;
+}
+
+.heart-button:hover::before {
+  transform: rotate(-45deg) translate(0px, 5px);
+  box-shadow: 0px 0px 0px #343131;
+  cursor: pointer;
+}
+
+.heart-button:hover::after {
+  transform: rotate(45deg) translate(6px, 0px);
+  box-shadow: 0px 0px 0px #343131;
+ 
+}
+
+.heart-button .heart-text-yes {
+  position: absolute;
+  top: 90%;
+  transform: translate(-60%, -50%);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 2;
+  transition-duration: 0.2s;
+}
+.heart-button .heart-text-no {
+  position: absolute;
+  top: 90%;
+  transform: translate(-60%, -50%);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  font-weight: bold;
+  z-index: 2;
+  transition-duration: 0.2s;
+}
+
+.heart-button:hover .heart-text-yes {
+  transform: translate(-23px, -19px);
+}
+.heart-button:hover .heart-text-no {
+  transform: translate(-15px, -18px);
+}
+
+.heart-button .heart-text-back {
+  position: absolute;
+  top: 90%;
+  transform: translate(-56%, -40%);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 2;
+  transition-duration: 0.2s;
+}
+
+.heart-button:hover .heart-text-back {
+  transform: translate(-30.5px, -20px);
+}
+
